@@ -5,9 +5,18 @@ app = Flask(__name__)
 # in-memory store for expenses
 expenses = []
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    # simple real value input page
+    if request.method == 'POST':
+        val_str = request.form.get('value')
+        try:
+            val = float(val_str)
+        except (TypeError, ValueError):
+            val = None
+        return render_template('index.html', value=val)
+
+    return render_template('index.html', value=None)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_expense():
