@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Expense Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    nav a { margin-right: 10px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('add_expense') }}">Add Expense</a>
+    <a href="{{ url_for('expenses_list') }}">View Expenses</a>
+    <a href="{{ url_for('total_spending') }}">Total</a>
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>
