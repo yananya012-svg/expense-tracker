@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <h2>Total Spending</h2>
-<p>Your total spending so far is <strong>{{ "%.2f" % total }}</strong>.</p>
+<p>Your total spending is: {{ total }}</p>
+<br>
+<a href="/">Back to Home</a>
+
 {% endblock %}
