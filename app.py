@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
+import pickle
 
 app = Flask(__name__)
 
@@ -75,18 +76,34 @@ def total_spending():
 
 @app.route('/predict')
 def predict():
-    result = train_model()
+    # Prefer a saved model if available
+    model = None
+    try:
+        with open('model.pkl', 'rb') as f:
+            model = pickle.load(f)
+            use_saved = True
+    except Exception:
+        use_saved = False
 
-    if result is None:
-        return "Add at least 3 expenses to train the model."
-
-    model, df = result
+    # If no saved model, train from current expenses
+    if not use_saved:
+        result = train_model()
+        if result is None:
+            return "Add at least 3 expenses to train the model or provide model.pkl."
+        model, df = result
+    else:
+        # need dataframe to compute next day index
+        if len(expenses) == 0:
+            return "Add some expenses first."
+        df = pd.DataFrame(expenses)
+        df['date'] = pd.to_datetime(df['date'])
+        df = df.sort_values('date')
+        df['day_number'] = (df['date'] - df['date'].min()).dt.days
 
     next_day = df['day_number'].max() + 1
     prediction = model.predict([[next_day]])[0]
 
-    return render_template("predict.html",
-                           prediction=round(prediction, 2))
+    return render_template("predict.html", prediction=round(prediction, 2))
 
 
 if __name__ == '__main__':
