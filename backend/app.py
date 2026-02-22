@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 
-app = Flask(__name__)
+# point Flask to the frontend folder for templates
+app = Flask(__name__, template_folder='../frontend')
 
 # in-memory store for expenses
 expenses = []
