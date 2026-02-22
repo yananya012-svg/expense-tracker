@@ -45,7 +45,7 @@ python app.py
 ```
 
 
-Open `http://127.0.0.1:5000/` in your browser to use the web interface.
+Open `http://127.0.0.1:5000/` in your browser to use the web interface. **Do not try to open any HTML files directly using `file://` paths; you will see an "ERR_FILE_NOT_FOUND" message.**
 
 ## Running the CLI app
 
