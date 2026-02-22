@@ -1,6 +1,11 @@
 
 {% extends "base.html" %}
 {% block content %}
-<h1>Welcome to the Web Expense Tracker</h1>
-<p>Use the navigation links above to manage your expenses.</p>
+<div class="text-center">
+  <h1>Welcome to Expense Tracker</h1>
+  <p class="lead">Quickly add and review your spending.</p>
+  <a class="btn btn-primary m-2" href="{{ url_for('add_expense') }}">Add Expense</a>
+  <a class="btn btn-secondary m-2" href="{{ url_for('expenses_list') }}">View Expenses</a>
+  <a class="btn btn-info m-2" href="{{ url_for('total_spending') }}">View Total Spending</a>
+</div>
 {% endblock %}
