@@ -7,15 +7,16 @@ This repository contains a simple expense tracker application.
 ```
 expense-tracker/
 │
-├── app.py              # Flask web application
-├── main.py             # CLI/terminal version
-├── requirements.txt    # Dependencies
-├── templates/          # HTML templates for the Flask app
+├── backend/
+│   ├── app.py            # Flask web application (backend)
+│   └── requirements.txt  # Dependencies for backend
+├── frontend/             # HTML templates and static frontend
 │   ├── base.html
 │   ├── index.html
 │   ├── add.html
 │   ├── expenses.html
 │   └── total.html
+├── main.py               # CLI/terminal version (left in root)
 ```
 
 ## Setup
