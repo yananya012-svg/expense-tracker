@@ -28,14 +28,22 @@ expense-tracker/
    ```
 2. Install dependencies:
    ```bash
+   cd backend
    pip install -r requirements.txt
    ```
 
 ## Running the web app
 
+You can start the server from either the backend folder or the project root:
+
 ```bash
+# from backend folder
+cd backend && python app.py
+
+# or from the workspace root (launcher)
 python app.py
 ```
+
 
 Open `http://127.0.0.1:5000/` in your browser to use the web interface.
 
